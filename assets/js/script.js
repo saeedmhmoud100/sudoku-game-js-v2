@@ -7,9 +7,5 @@ window.onload = function () {
     const autoFill = new AutoFillBoard();
     board.displayBoard("main-board");
     document.addEventListener('keyup', keyListener.activate_Listener);
-    setTimeout(() => {
-        for (let i = 0; i < 9; i++) {
-            autoFill.fill(i);
-        }
-    }, 1000);
+    autoFill.fill();
 };

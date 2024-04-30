@@ -1,0 +1,70 @@
+@use "variables" as v;
+
+@use "BigBoard";
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background: url("../images/background.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+.board{
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, calc(100% / 3 ) );
+  align-items: center;
+  justify-items: center;
+  width: v.$small-board-width;
+  height: v.$small-board-height;
+
+  margin: 0 auto;
+  background-color: #ccc;
+
+  border-radius: 0 0 5px 5px;
+
+  > .board-button{
+    border: 1px solid #000;
+    background-color: white;
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: box-shadow 0.3s linear;
+
+    &::selection{
+      background-color: transparent;
+    }
+
+    &.wrong{
+      animation: wrong .5s forwards alternate infinite;
+    }
+
+    &:hover:empty{
+      box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.5) inset, -1px -1px 1px 1px rgba(0,0,0,0.5) inset;
+    }
+    &.selected{
+        background-color: cornflowerblue;
+    }
+
+
+  }
+
+}
+
+@keyframes wrong {
+  0%{
+    background-color: white;
+  }
+  100%{
+      background-color: tomato;
+  }
+}
